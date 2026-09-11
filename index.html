@@ -1,1 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth"> <!--【ポイント3】scroll-smoothでスムーズに移動 -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>研究ポートフォリオ</title>
+    
+    <!-- Tailwind CSS & Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- 分離した外部CSSファイルを読み込み -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="antialiased">
 
+    <!-- 固定ヘッダー & 右上ナビゲーション -->
+    <header class="sticky top-0 z-50 bg-[#0d0e15]/90 backdrop-blur-md border-b border-[#2a2d3d]">
+        <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
+            
+            <!-- ロゴエリア -->
+            <div class="flex items-center space-x-3">...</div>
+
+            <!-- 【ポイント4】右上ナビゲーション (href="#id名"でセクションとリンク) -->
+            <nav class="hidden lg:flex items-center space-x-1">
+                <a href="#overview" class="nav-link ...">研究概要・目的</a>
+                <a href="#background" class="nav-link ...">研究背景</a>
+                <a href="#applications" class="nav-link ...">使用用途</a>
+                <a href="#experiments" class="nav-link ...">実験</a>
+                <a href="#challenges" class="nav-link ...">課題</a>
+                <a href="#code" class="nav-link ...">プログラムコード</a>
+            </nav>
+            
+        </div>
+    </header>
+
+    <!-- メインコンテンツ領域 -->
+    <main class="max-w-7xl mx-auto px-4 py-8 space-y-12">
+        
+        <!-- 【ポイント5】各セクションに id を付与 -->
+        <section id="overview"> ... </section>
+        <section id="background"> ... </section>
+        <section id="applications"> ... </section>
+        <section id="experiments"> ... </section>
+        <section id="challenges"> ... </section>
+        <section id="code"> ... </section>
+
+    </main>
+
+</body>
+</html>
