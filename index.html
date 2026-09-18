@@ -1,191 +1,380 @@
+これまでに整理したCSSスタイル設定（パープルテーマ、固定ヘッダー時のスクロール位置ズレ防止設定、グラデーションテキスト、スクロールバー等）[1-4] と、ヘッダー（1行表示ロゴ・ナビゲーション）[5]、メインコンテンツ、そして追加した **空白6枠の「研究日誌」セクション** をすべて1つのHTMLファイルに統合しました。
+
+このコードをそのまま `.html` ファイル（例: `index.html`）として保存していただければ、単体で動作します。
+
+```html
 <!DOCTYPE html>
-<html lang="ja" class="scroll-smooth"> <!--【ポイント3】scroll-smoothでスムーズに移動 -->
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>研究ポートフォリオ</title>
+    <title>市川工業高等学校 電気科 課題研究 4班</title>
     
-    <!-- Tailwind CSS & Icons -->
+    <!-- Tailwind CSS & Font Awesome CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- 分離した外部CSSファイルを読み込み -->
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 1. 変数定義（パープルテーマの設定） */
+        :root {
+            --bg-dark: #0d0e15;         /* 背景のダークカラー */
+            --card-dark: #161823;       /* カード背景色 */
+            --border-dark: #2a2d3d;     /* 枠線色 */
+            --hover-dark: #222536;      /* ホバー時の背景色 */
+            --purple-primary: #8b5cf6;  /* メインの紫色 */
+            --purple-deep: #6d28d9;     /* 濃い紫色 */
+            --purple-light: #c4b5fd;    /* 明るい紫色（アクセント） */
+            --purple-glow: rgba(124, 58, 237, 0.25); /* 発光用透明パープル */
+        }
+
+        /* 2. 基本スタイル & スクロール設定 */
+        body {
+            background-color: var(--bg-dark);
+            color: #e5e7eb;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+        }
+
+        /* 固定ヘッダー時のスクロール位置ズレ防止 */
+        section {
+            scroll-margin-top: 80px;
+        }
+
+        /* パープルグラデーションテキスト */
+        .text-purple-gradient {
+            background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 50%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* 紫色のカスタムスクロールバー */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3b2a63;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--purple-deep);
+        }
+
+        /* カードのパープル発光エフェクト */
+        .purple-glow {
+            box-shadow: 0 0 25px -5px var(--purple-glow);
+        }
+
+        /* ナビゲーションスタイル */
+        .nav-link {
+            transition: all 0.2s ease;
+            color: #d1d5db;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        .nav-link:hover {
+            color: #ffffff;
+            background-color: rgba(139, 92, 246, 0.1);
+        }
+        .nav-link.active {
+            color: var(--purple-light);
+            border-bottom: 2px solid var(--purple-primary);
+            background-color: rgba(124, 58, 237, 0.15);
+        }
+
+        /* コードブロック背景 */
+        .code-container {
+            background-color: #0b0c10;
+            border: 1px solid var(--border-dark);
+            border-radius: 0.75rem;
+            font-family: 'Fira Code', monospace;
+        }
+    </style>
 </head>
 <body class="antialiased">
-<div class="flex items-center space-x-3">
-    <div class="w-8 h-8 rounded-lg bg-[#8b5cf6]/20 border border-[#8b5cf6]/40 flex items-center justify-center text-[#c4b5fd]">
-        <i class="fa-solid fa-bolt text-[#8b5cf6]"></i>
-    </div>
-    <span class="text-sm md:text-base font-bold text-white">
-</div>
 
-            <!-- 【ポイント4】右上ナビゲーション (href="#id名"でセクションとリンク) -->
+    <!-- 固定ヘッダー & 右上ナビゲーション -->
+    <header class="sticky top-0 z-50 bg-[#0d0e15]/90 backdrop-blur-md border-b border-[#2a2d3d]">
+        <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
+            
+            <!-- ロゴエリア (1行表示パターン) -->
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded-lg bg-[#8b5cf6]/20 border border-[#8b5cf6]/40 flex items-center justify-center text-[#c4b5fd]">
+                    <i class="fa-solid fa-bolt text-[#8b5cf6]"></i>
+                </div>
+                <span class="text-sm md:text-base font-bold text-white">
+                    市川工業高等学校 電気科 課題研究 <span class="text-purple-gradient">4班</span>
+                </span>
+            </div>
+
+            <!-- 右上ナビゲーション -->
             <nav class="hidden lg:flex items-center space-x-1">
-                <a href="#overview" class="nav-link ...">研究概要・目的</a>
-                <a href="#background" class="nav-link ...">研究背景</a>
-                <a href="#applications" class="nav-link ...">使用用途</a>
-                <a href="#experiments" class="nav-link ...">実験</a>
-                <a href="#challenges" class="nav-link ...">課題</a>
-                <a href="#code" class="nav-link ...">プログラムコード</a>
-                <a href="#journal" class="nav-link ...">研究日誌</a>
-
+                <a href="#overview" class="nav-link">研究概要・目的</a>
+                <a href="#background" class="nav-link">研究背景</a>
+                <a href="#applications" class="nav-link">使用用途</a>
+                <a href="#experiments" class="nav-link">実験</a>
+                <a href="#challenges" class="nav-link">課題</a>
+                <a href="#code" class="nav-link">プログラムコード</a>
+                <a href="#journal" class="nav-link">研究日誌</a>
             </nav>
-              <!-- ロゴエリア -->
-            <div class="flex items-center space-x-3">...</div>
-
+            
         </div>
     </header>
 
     <!-- メインコンテンツ領域 -->
     <main class="max-w-7xl mx-auto px-4 py-8 space-y-12">
         
-        <!-- 【ポイント5】各セクションに id を付与 -->
-        <section id="overview"> ... </section>
-        <section id="background"> ... </section>
-        <section id="applications"> ... </section>
-        <section id="experiments"> ... </section>
-        <section id="challenges"> ... </section>
-        <section id="code"> ... </section>
+        <!-- 研究概要・目的 -->
+        <section id="overview" class="space-y-4">
+            <div class="border-b border-[#2a2d3d] pb-4 flex items-center justify-between">
+                <h2 class="text-2xl font-bold text-white flex items-center gap-3">
+                    <i class="fa-solid fa-bullseye text-[#8b5cf6]"></i>
+                    <span class="text-purple-gradient">研究概要・目的</span>
+                </h2>
+            </div>
+            <div class="bg-[#161823] border border-[#2a2d3d] rounded-xl p-6">
+                <p class="text-gray-300 leading-relaxed">ここに研究概要・目的の内容を入力してください。</p>
+            </div>
+        </section>
+
+        <!-- 研究背景 -->
+        <section id="background" class="space-y-4">
+            <div class="border-b border-[#2a2d3d] pb-4 flex items-center justify-between">
+                <h2 class="text-2xl font-bold text-white flex items-center gap-3">
+                    <i class="fa-solid fa-book-open text-[#8b5cf6]"></i>
+                    <span class="text-purple-gradient">研究背景</span>
+                </h2>
+            </div>
+            <div class="bg-[#161823] border border-[#2a2d3d] rounded-xl p-6">
+                <p class="text-gray-300 leading-relaxed">ここに研究背景の内容を入力してください。</p>
+            </div>
+        </section>
+
+        <!-- 使用用途 -->
+        <section id="applications" class="space-y-4">
+            <div class="border-b border-[#2a2d3d] pb-4 flex items-center justify-between">
+                <h2 class="text-2xl font-bold text-white flex items-center gap-3">
+                    <i class="fa-solid fa-lightbulb text-[#8b5cf6]"></i>
+                    <span class="text-purple-gradient">使用用途</span>
+                </h2>
+            </div>
+            <div class="bg-[#161823] border border-[#2a2d3d] rounded-xl p-6">
+                <p class="text-gray-300 leading-relaxed">ここに使用用途の内容を入力してください。</p>
+            </div>
+        </section>
+
+        <!-- 実験 -->
+        <section id="experiments" class="space-y-4">
+            <div class="border-b border-[#2a2d3d] pb-4 flex items-center justify-between">
+                <h2 class="text-2xl font-bold text-white flex items-center gap-3">
+                    <i class="fa-solid fa-vial text-[#8b5cf6]"></i>
+                    <span class="text-purple-gradient">実験</span>
+                </h2>
+            </div>
+            <div class="bg-[#161823] border border-[#2a2d3d] rounded-xl p-6">
+                <p class="text-gray-300 leading-relaxed">ここに実験内容を入力してください。</p>
+            </div>
+        </section>
+
+        <!-- 課題 -->
+        <section id="challenges" class="space-y-4">
+            <div class="border-b border-[#2a2d3d] pb-4 flex items-center justify-between">
+                <h2 class="text-2xl font-bold text-white flex items-center gap-3">
+                    <i class="fa-solid fa-triangle-exclamation text-[#8b5cf6]"></i>
+                    <span class="text-purple-gradient">課題</span>
+                </h2>
+            </div>
+            <div class="bg-[#161823] border border-[#2a2d3d] rounded-xl p-6">
+                <p class="text-gray-300 leading-relaxed">ここに現在の課題や今後の展開を入力してください。</p>
+            </div>
+        </section>
+
+        <!-- プログラムコード -->
+        <section id="code" class="space-y-4">
+            <div class="border-b border-[#2a2d3d] pb-4 flex items-center justify-between">
+                <h2 class="text-2xl font-bold text-white flex items-center gap-3">
+                    <i class="fa-solid fa-code text-[#8b5cf6]"></i>
+                    <span class="text-purple-gradient">プログラムコード</span>
+                </h2>
+            </div>
+            <div class="code-container p-4 overflow-x-auto text-sm text-gray-300">
+                <pre><code>// ここにプログラムコードを入力してください</code></pre>
+            </div>
+        </section>
+
+        <!-- 【研究日誌セクション (空白枠6個)】 -->
+        <section id="journal" class="space-y-6">
+            <div class="border-b border-[#2a2d3d] pb-4 flex items-center justify-between">
+                <h2 class="text-2xl font-bold text-white flex items-center gap-3">
+                    <i class="fa-solid fa-book-bookmark text-[#8b5cf6]"></i>
+                    <span class="text-purple-gradient">研究日誌</span>
+                </h2>
+                <span class="text-sm text-gray-400">進捗・活動記録</span>
+            </div>
+
+            <!-- 空白カードのグリッド配置 (2列) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                
+                <!-- 枠 1 -->
+                <article class="bg-[#161823] border border-[#2a2d3d] rounded-xl p-6 hover:border-[#8b5cf6]/50 transition duration-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between text-sm text-gray-400 mb-3">
+                            <span class="flex items-center gap-2">
+                                <i class="fa-regular fa-calendar"></i> 年.月.日
+                            </span>
+                            <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#8b5cf6]/20 text-[#c4b5fd] border border-[#8b5cf6]/30">
+                                カテゴリ
+                            </span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-300 mb-2 border-b border-[#2a2d3d] pb-2 border-dashed">
+                            第1回：タイトルを入力
+                        </h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-4 min-h-[60px]">
+                            ここに活動内容、進捗、考察などを入力してください...
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs text-gray-500">
+                        <span class="bg-[#2a2d3d] px-2 py-1 rounded">#タグ1</span>
+                        <span class="bg-[#2a2d3d] px-2 py-1 rounded">#タグ2</span>
+                    </div>
+                </article>
+
+                <!-- 枠 2 -->
+                <article class="bg-[#161823] border border-[#2a2d3d] rounded-xl p-6 hover:border-[#8b5cf6]/50 transition duration-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between text-sm text-gray-400 mb-3">
+                            <span class="flex items-center gap-2">
+                                <i class="fa-regular fa-calendar"></i> 年.月.日
+                            </span>
+                            <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#8b5cf6]/20 text-[#c4b5fd] border border-[#8b5cf6]/30">
+                                カテゴリ
+                            </span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-300 mb-2 border-b border-[#2a2d3d] pb-2 border-dashed">
+                            第2回：タイトルを入力
+                        </h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-4 min-h-[60px]">
+                            ここに活動内容、進捗、考察などを入力してください...
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs text-gray-500">
+                        <span class="bg-[#2a2d3d] px-2 py-1 rounded">#タグ1</span>
+                        <span class="bg-[#2a2d3d] px-2 py-1 rounded">#タグ2</span>
+                    </div>
+                </article>
+
+                <!-- 枠 3 -->
+                <article class="bg-[#161823] border border-[#2a2d3d] rounded-xl p-6 hover:border-[#8b5cf6]/50 transition duration-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between text-sm text-gray-400 mb-3">
+                            <span class="flex items-center gap-2">
+                                <i class="fa-regular fa-calendar"></i> 年.月.日
+                            </span>
+                            <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#8b5cf6]/20 text-[#c4b5fd] border border-[#8b5cf6]/30">
+                                カテゴリ
+                            </span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-300 mb-2 border-b border-[#2a2d3d] pb-2 border-dashed">
+                            第3回：タイトルを入力
+                        </h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-4 min-h-[60px]">
+                            ここに活動内容、進捗、考察などを入力してください...
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs text-gray-500">
+                        <span class="bg-[#2a2d3d] px-2 py-1 rounded">#タグ1</span>
+                        <span class="bg-[#2a2d3d] px-2 py-1 rounded">#タグ2</span>
+                    </div>
+                </article>
+
+                <!-- 枠 4 -->
+                <article class="bg-[#161823] border border-[#2a2d3d] rounded-xl p-6 hover:border-[#8b5cf6]/50 transition duration-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between text-sm text-gray-400 mb-3">
+                            <span class="flex items-center gap-2">
+                                <i class="fa-regular fa-calendar"></i> 年.月.日
+                            </span>
+                            <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#8b5cf6]/20 text-[#c4b5fd] border border-[#8b5cf6]/30">
+                                カテゴリ
+                            </span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-300 mb-2 border-b border-[#2a2d3d] pb-2 border-dashed">
+                            第4回：タイトルを入力
+                        </h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-4 min-h-[60px]">
+                            ここに活動内容、進捗、考察などを入力してください...
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs text-gray-500">
+                        <span class="bg-[#2a2d3d] px-2 py-1 rounded">#タグ1</span>
+                        <span class="bg-[#2a2d3d] px-2 py-1 rounded">#タグ2</span>
+                    </div>
+                </article>
+
+                <!-- 枠 5 -->
+                <article class="bg-[#161823] border border-[#2a2d3d] rounded-xl p-6 hover:border-[#8b5cf6]/50 transition duration-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between text-sm text-gray-400 mb-3">
+                            <span class="flex items-center gap-2">
+                                <i class="fa-regular fa-calendar"></i> 年.月.日
+                            </span>
+                            <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#8b5cf6]/20 text-[#c4b5fd] border border-[#8b5cf6]/30">
+                                カテゴリ
+                            </span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-300 mb-2 border-b border-[#2a2d3d] pb-2 border-dashed">
+                            第5回：タイトルを入力
+                        </h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-4 min-h-[60px]">
+                            ここに活動内容、進捗、考察などを入力してください...
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs text-gray-500">
+                        <span class="bg-[#2a2d3d] px-2 py-1 rounded">#タグ1</span>
+                        <span class="bg-[#2a2d3d] px-2 py-1 rounded">#タグ2</span>
+                    </div>
+                </article>
+
+                <!-- 枠 6 -->
+                <article class="bg-[#161823] border border-[#2a2d3d] rounded-xl p-6 hover:border-[#8b5cf6]/50 transition duration-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between text-sm text-gray-400 mb-3">
+                            <span class="flex items-center gap-2">
+                                <i class="fa-regular fa-calendar"></i> 年.月.日
+                            </span>
+                            <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#8b5cf6]/20 text-[#c4b5fd] border border-[#8b5cf6]/30">
+                                カテゴリ
+                            </span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-300 mb-2 border-b border-[#2a2d3d] pb-2 border-dashed">
+                            第6回：タイトルを入力
+                        </h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-4 min-h-[60px]">
+                            ここに活動内容、進捗、考察などを入力してください...
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs text-gray-500">
+                        <span class="bg-[#2a2d3d] px-2 py-1 rounded">#タグ1</span>
+                        <span class="bg-[#2a2d3d] px-2 py-1 rounded">#タグ2</span>
+                    </div>
+                </article>
+
+            </div>
+        </section>
 
     </main>
-<!-- 【研究日誌セクション (空白枠6個)】 -->
-<section id="journal" class="space-y-6">
-    <!-- セクションヘッダー -->
-    <div class="border-b border-[#2a2d3d] pb-4 flex items-center justify-between">
-        <h2 class="text-2xl font-bold text-white flex items-center gap-3">
-            <i class="fa-solid fa-book-bookmark text-[#8b5cf6]"></i>
-            <span class="text-purple-gradient">研究日誌</span>
-        </h2>
-        <span class="text-sm text-gray-400">進捗・活動記録</span>
-    </div>
 
-    <!-- 空白カードのグリッド配置 (2列) -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        
-        <!-- 枠 1 -->
-        <article class="bg-[#161823] border border-[#2a2d3d] rounded-xl p-6 hover:border-[#8b5cf6]/50 transition duration-200 flex flex-col justify-between">
-            <div>
-                <div class="flex items-center justify-between text-sm text-gray-400 mb-3">
-                    <span class="flex items-center gap-2">
-                        <i class="fa-regular fa-calendar"></i> 年.月.日
-                    </span>
-                </div>
-                <h3 class="text-lg font-semibold text-gray-300 mb-2 border-b border-[#2a2d3d] pb-2 border-dashed">
-                    タイトルを入力
-                </h3>
-                <p class="text-gray-500 text-sm leading-relaxed mb-4 min-h-[60px]">
-                    ここに活動内容、進捗、考察などを入力してください...
-                </p>
-            </div>
-            <div class="flex items-center gap-2 text-xs text-gray-500">
-                <span class="bg-[#2a2d3d] px-2 py-1 rounded">#タグ1</span>
-                <span class="bg-[#2a2d3d] px-2 py-1 rounded">#タグ2</span>
-            </div>
-        </article>
-
-        <!-- 枠 2 -->
-        <article class="bg-[#161823] border border-[#2a2d3d] rounded-xl p-6 hover:border-[#8b5cf6]/50 transition duration-200 flex flex-col justify-between">
-            <div>
-                <div class="flex items-center justify-between text-sm text-gray-400 mb-3">
-                    <span class="flex items-center gap-2">
-                        <i class="fa-regular fa-calendar"></i> 年.月.日
-                </div>
-                <h3 class="text-lg font-semibold text-gray-300 mb-2 border-b border-[#2a2d3d] pb-2 border-dashed">
-                    タイトルを入力
-                </h3>
-                <p class="text-gray-500 text-sm leading-relaxed mb-4 min-h-[60px]">
-                    ここに活動内容、進捗、考察などを入力してください...
-                </p>
-            </div>
-            <div class="flex items-center gap-2 text-xs text-gray-500">
-                <span class="bg-[#2a2d3d] px-2 py-1 rounded">#タグ1</span>
-                <span class="bg-[#2a2d3d] px-2 py-1 rounded">#タグ2</span>
-            </div>
-        </article>
-
-        <!-- 枠 3 -->
-        <article class="bg-[#161823] border border-[#2a2d3d] rounded-xl p-6 hover:border-[#8b5cf6]/50 transition duration-200 flex flex-col justify-between">
-            <div>
-                <div class="flex items-center justify-between text-sm text-gray-400 mb-3">
-                    <span class="flex items-center gap-2">
-                        <i class="fa-regular fa-calendar"></i> 年.月.日
-                </div>
-                <h3 class="text-lg font-semibold text-gray-300 mb-2 border-b border-[#2a2d3d] pb-2 border-dashed">
-                    タイトルを入力
-                </h3>
-                <p class="text-gray-500 text-sm leading-relaxed mb-4 min-h-[60px]">
-                    ここに活動内容、進捗、考察などを入力してください...
-                </p>
-            </div>
-            <div class="flex items-center gap-2 text-xs text-gray-500">
-                <span class="bg-[#2a2d3d] px-2 py-1 rounded">#タグ1</span>
-                <span class="bg-[#2a2d3d] px-2 py-1 rounded">#タグ2</span>
-            </div>
-        </article>
-
-        <!-- 枠 4 -->
-        <article class="bg-[#161823] border border-[#2a2d3d] rounded-xl p-6 hover:border-[#8b5cf6]/50 transition duration-200 flex flex-col justify-between">
-            <div>
-                <div class="flex items-center justify-between text-sm text-gray-400 mb-3">
-                    <span class="flex items-center gap-2">
-                        <i class="fa-regular fa-calendar"></i> 年.月.日
-                </div>
-                <h3 class="text-lg font-semibold text-gray-300 mb-2 border-b border-[#2a2d3d] pb-2 border-dashed">
-                    タイトルを入力
-                </h3>
-                <p class="text-gray-500 text-sm leading-relaxed mb-4 min-h-[60px]">
-                    ここに活動内容、進捗、考察などを入力してください...
-                </p>
-            </div>
-            <div class="flex items-center gap-2 text-xs text-gray-500">
-                <span class="bg-[#2a2d3d] px-2 py-1 rounded">#タグ1</span>
-                <span class="bg-[#2a2d3d] px-2 py-1 rounded">#タグ2</span>
-            </div>
-        </article>
-
-        <!-- 枠 5 -->
-        <article class="bg-[#161823] border border-[#2a2d3d] rounded-xl p-6 hover:border-[#8b5cf6]/50 transition duration-200 flex flex-col justify-between">
-            <div>
-                <div class="flex items-center justify-between text-sm text-gray-400 mb-3">
-                    <span class="flex items-center gap-2">
-                        <i class="fa-regular fa-calendar"></i> 年.月.日
-                </div>
-                <h3 class="text-lg font-semibold text-gray-300 mb-2 border-b border-[#2a2d3d] pb-2 border-dashed">
-                    タイトルを入力
-                </h3>
-                <p class="text-gray-500 text-sm leading-relaxed mb-4 min-h-[60px]">
-                    ここに活動内容、進捗、考察などを入力してください...
-                </p>
-            </div>
-            <div class="flex items-center gap-2 text-xs text-gray-500">
-                <span class="bg-[#2a2d3d] px-2 py-1 rounded">#タグ1</span>
-                <span class="bg-[#2a2d3d] px-2 py-1 rounded">#タグ2</span>
-            </div>
-        </article>
-
-        <!-- 枠 6 -->
-        <article class="bg-[#161823] border border-[#2a2d3d] rounded-xl p-6 hover:border-[#8b5cf6]/50 transition duration-200 flex flex-col justify-between">
-            <div>
-                <div class="flex items-center justify-between text-sm text-gray-400 mb-3">
-                    <span class="flex items-center gap-2">
-                        <i class="fa-regular fa-calendar"></i> 年.月.日
-                </div>
-                <h3 class="text-lg font-semibold text-gray-300 mb-2 border-b border-[#2a2d3d] pb-2 border-dashed">
-                    タイトルを入力
-                </h3>
-                <p class="text-gray-500 text-sm leading-relaxed mb-4 min-h-[60px]">
-                    ここに活動内容、進捗、考察などを入力してください...
-                </p>
-            </div>
-            <div class="flex items-center gap-2 text-xs text-gra500">
-                <span class="bg-[#2a2d3d] px-2 py-1 rounded">#タグ1</span>
-                <span class="bg-[#2a2d3d] px-2 py-1 rounded">#タグ2</span>
-            </div>
-        </article>
-
-    </div>
-</section>
+    <!-- フッター -->
+    <footer class="border-t border-[#2a2d3d] mt-16 py-8 text-center text-sm text-gray-500">
+        <p>&copy; 2026 市川工業高等学校 電気科 課題研究 4班</p>
+    </footer>
 
 </body>
 </html>
+```
+
+さらにセクションを追加したい場合や、スマホ表示時（ハンバーガーメニュー等）の動きを作りたい場合などがありましたらお知らせください。
