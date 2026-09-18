@@ -10,22 +10,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* 1. 変数定義（パープルテーマの設定） */
+        /* 1. 変数定義（ライト＆ナチュラルグリーンテーマの設定） */
         :root {
-            --bg-dark: #0d0e15;         /* 背景のダークカラー */
-            --card-dark: #161823;       /* カード背景色 */
-            --border-dark: #2a2d3d;     /* 枠線色 */
-            --hover-dark: #222536;      /* ホバー時の背景色 */
-            --purple-primary: #8b5cf6;  /* メインの紫色 */
-            --purple-deep: #6d28d9;     /* 濃い紫色 */
-            --purple-light: #c4b5fd;    /* 明るい紫色（アクセント） */
-            --purple-glow: rgba(124, 58, 237, 0.25); /* 発光用透明パープル */
+            --bg-light: #f8fafc;         /* 全体背景色（清潔感のあるオフホワイト） */
+            --card-light: #ffffff;       /* カード背景色（純白） */
+            --border-light: #e2e8f0;     /* 枠線色 */
+            --text-main: #1e293b;        /* 主な文字色（ダークグレー） */
+            --text-muted: #64748b;       /* 補足文字色 */
+            --green-primary: #10b981;    /* メインの癒しグリーン */
+            --green-deep: #059669;       /* 濃いグリーン */
+            --green-light: #dcfce7;      /* 明るいグリーン（バッジ等） */
+            --green-glow: rgba(16, 185, 129, 0.12); /* カードホバー用の柔らかい光沢 */
         }
 
         /* 2. 基本スタイル & スクロール設定 */
         body {
-            background-color: var(--bg-dark);
-            color: #e5e7eb;
+            background-color: var(--bg-light);
+            color: var(--text-main);
             font-family: 'Inter', sans-serif;
             min-height: 100vh;
         }
@@ -35,56 +36,51 @@
             scroll-margin-top: 80px;
         }
 
-        /* パープルグラデーションテキスト */
-        .text-purple-gradient {
-            background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 50%, #c084fc 100%);
+        /* 癒し効果のあるグリーングラデーションテキスト */
+        .text-green-gradient {
+            background: linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        /* 紫色のカスタムスクロールバー */
+        /* グリーンのカスタムスクロールバー */
         ::-webkit-scrollbar {
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: var(--bg-dark);
+            background: var(--bg-light);
         }
         ::-webkit-scrollbar-thumb {
-            background: #3b2a63;
+            background: #a7f3d0;
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: var(--purple-deep);
-        }
-
-        /* カードのパープル発光エフェクト */
-        .purple-glow {
-            box-shadow: 0 0 25px -5px var(--purple-glow);
+            background: var(--green-primary);
         }
 
         /* ナビゲーションスタイル */
         .nav-link {
             transition: all 0.2s ease;
-            color: #d1d5db;
+            color: #4b5563;
             padding: 0.5rem 0.75rem;
             border-radius: 0.375rem;
             font-size: 0.875rem;
             font-weight: 500;
         }
         .nav-link:hover {
-            color: #ffffff;
-            background-color: rgba(139, 92, 246, 0.1);
+            color: #059669;
+            background-color: rgba(16, 185, 129, 0.08);
         }
         .nav-link.active {
-            color: var(--purple-light);
-            border-bottom: 2px solid var(--purple-primary);
-            background-color: rgba(124, 58, 237, 0.15);
+            color: var(--green-deep);
+            border-bottom: 2px solid var(--green-primary);
+            background-color: rgba(16, 185, 129, 0.12);
         }
 
         /* コードブロック背景 */
         .code-container {
-            background-color: #0b0c10;
-            border: 1px solid var(--border-dark);
+            background-color: #0f172a;
+            border: 1px solid var(--border-light);
             border-radius: 0.75rem;
             font-family: 'Fira Code', monospace;
         }
@@ -93,16 +89,16 @@
 <body class="antialiased">
 
     <!-- 固定ヘッダー & 右上ナビゲーション -->
-    <header class="sticky top-0 z-50 bg-[#0d0e15]/90 backdrop-blur-md border-b border-[#2a2d3d]">
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
         <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
             
-            <!-- ロゴエリア (1行表示パターン) -->
+            <!-- ロゴエリア (1行表示) -->
             <div class="flex items-center space-x-3">
-                <div class="w-8 h-8 rounded-lg bg-[#8b5cf6]/20 border border-[#8b5cf6]/40 flex items-center justify-center text-[#c4b5fd]">
-                    <i class="fa-solid fa-bolt text-[#8b5cf6]"></i>
+                <div class="w-8 h-8 rounded-lg bg-emerald-100 border border-emerald-300 flex items-center justify-center text-emerald-600">
+                    <i class="fa-solid fa-bolt text-emerald-500"></i>
                 </div>
-                <span class="text-sm md:text-base font-bold text-white">
-                    市川工業高等学校 電気科 課題研究 <span class="text-purple-gradient">4班</span>
+                <span class="text-sm md:text-base font-bold text-gray-800">
+                    市川工業高等学校 電気科 課題研究 <span class="text-green-gradient">4班</span>
                 </span>
             </div>
 
@@ -125,236 +121,236 @@
         
         <!-- 研究概要・目的 -->
         <section id="overview" class="space-y-4">
-            <div class="border-b border-[#2a2d3d] pb-4 flex items-center justify-between">
-                <h2 class="text-2xl font-bold text-white flex items-center gap-3">
-                    <i class="fa-solid fa-bullseye text-[#8b5cf6]"></i>
-                    <span class="text-purple-gradient">研究概要・目的</span>
+            <div class="border-b border-gray-200 pb-4 flex items-center justify-between">
+                <h2 class="text-2xl font-bold text-gray-800 flex items-center gap-3">
+                    <i class="fa-solid fa-bullseye text-emerald-500"></i>
+                    <span class="text-green-gradient">研究概要・目的</span>
                 </h2>
             </div>
-            <div class="bg-[#161823] border border-[#2a2d3d] rounded-xl p-6">
-                <p class="text-gray-300 leading-relaxed">ここに研究概要・目的の内容を入力してください。</p>
+            <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                <p class="text-gray-600 leading-relaxed">ここに研究概要・目的の内容を入力してください。</p>
             </div>
         </section>
 
         <!-- 研究背景 -->
         <section id="background" class="space-y-4">
-            <div class="border-b border-[#2a2d3d] pb-4 flex items-center justify-between">
-                <h2 class="text-2xl font-bold text-white flex items-center gap-3">
-                    <i class="fa-solid fa-book-open text-[#8b5cf6]"></i>
-                    <span class="text-purple-gradient">研究背景</span>
+            <div class="border-b border-gray-200 pb-4 flex items-center justify-between">
+                <h2 class="text-2xl font-bold text-gray-800 flex items-center gap-3">
+                    <i class="fa-solid fa-book-open text-emerald-500"></i>
+                    <span class="text-green-gradient">研究背景</span>
                 </h2>
             </div>
-            <div class="bg-[#161823] border border-[#2a2d3d] rounded-xl p-6">
-                <p class="text-gray-300 leading-relaxed">ここに研究背景の内容を入力してください。</p>
+            <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                <p class="text-gray-600 leading-relaxed">ここに研究背景の内容を入力してください。</p>
             </div>
         </section>
 
         <!-- 使用用途 -->
         <section id="applications" class="space-y-4">
-            <div class="border-b border-[#2a2d3d] pb-4 flex items-center justify-between">
-                <h2 class="text-2xl font-bold text-white flex items-center gap-3">
-                    <i class="fa-solid fa-lightbulb text-[#8b5cf6]"></i>
-                    <span class="text-purple-gradient">使用用途</span>
+            <div class="border-b border-gray-200 pb-4 flex items-center justify-between">
+                <h2 class="text-2xl font-bold text-gray-800 flex items-center gap-3">
+                    <i class="fa-solid fa-lightbulb text-emerald-500"></i>
+                    <span class="text-green-gradient">使用用途</span>
                 </h2>
             </div>
-            <div class="bg-[#161823] border border-[#2a2d3d] rounded-xl p-6">
-                <p class="text-gray-300 leading-relaxed">ここに使用用途の内容を入力してください。</p>
+            <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                <p class="text-gray-600 leading-relaxed">ここに使用用途の内容を入力してください。</p>
             </div>
         </section>
 
         <!-- 実験 -->
         <section id="experiments" class="space-y-4">
-            <div class="border-b border-[#2a2d3d] pb-4 flex items-center justify-between">
-                <h2 class="text-2xl font-bold text-white flex items-center gap-3">
-                    <i class="fa-solid fa-vial text-[#8b5cf6]"></i>
-                    <span class="text-purple-gradient">実験</span>
+            <div class="border-b border-gray-200 pb-4 flex items-center justify-between">
+                <h2 class="text-2xl font-bold text-gray-800 flex items-center gap-3">
+                    <i class="fa-solid fa-vial text-emerald-500"></i>
+                    <span class="text-green-gradient">実験</span>
                 </h2>
             </div>
-            <div class="bg-[#161823] border border-[#2a2d3d] rounded-xl p-6">
-                <p class="text-gray-300 leading-relaxed">ここに実験内容を入力してください。</p>
+            <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                <p class="text-gray-600 leading-relaxed">ここに実験内容を入力してください。</p>
             </div>
         </section>
 
         <!-- 課題 -->
         <section id="challenges" class="space-y-4">
-            <div class="border-b border-[#2a2d3d] pb-4 flex items-center justify-between">
-                <h2 class="text-2xl font-bold text-white flex items-center gap-3">
-                    <i class="fa-solid fa-triangle-exclamation text-[#8b5cf6]"></i>
-                    <span class="text-purple-gradient">課題</span>
+            <div class="border-b border-gray-200 pb-4 flex items-center justify-between">
+                <h2 class="text-2xl font-bold text-gray-800 flex items-center gap-3">
+                    <i class="fa-solid fa-triangle-exclamation text-emerald-500"></i>
+                    <span class="text-green-gradient">課題</span>
                 </h2>
             </div>
-            <div class="bg-[#161823] border border-[#2a2d3d] rounded-xl p-6">
-                <p class="text-gray-300 leading-relaxed">ここに現在の課題や今後の展開を入力してください。</p>
+            <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                <p class="text-gray-600 leading-relaxed">ここに現在の課題や今後の展開を入力してください。</p>
             </div>
         </section>
 
         <!-- プログラムコード -->
         <section id="code" class="space-y-4">
-            <div class="border-b border-[#2a2d3d] pb-4 flex items-center justify-between">
-                <h2 class="text-2xl font-bold text-white flex items-center gap-3">
-                    <i class="fa-solid fa-code text-[#8b5cf6]"></i>
-                    <span class="text-purple-gradient">プログラムコード</span>
+            <div class="border-b border-gray-200 pb-4 flex items-center justify-between">
+                <h2 class="text-2xl font-bold text-gray-800 flex items-center gap-3">
+                    <i class="fa-solid fa-code text-emerald-500"></i>
+                    <span class="text-green-gradient">プログラムコード</span>
                 </h2>
             </div>
-            <div class="code-container p-4 overflow-x-auto text-sm text-gray-300">
+            <div class="code-container p-4 overflow-x-auto text-sm text-emerald-400 shadow-sm">
                 <pre><code>// ここにプログラムコードを入力してください</code></pre>
             </div>
         </section>
 
         <!-- 【研究日誌セクション (空白枠6個)】 -->
         <section id="journal" class="space-y-6">
-            <div class="border-b border-[#2a2d3d] pb-4 flex items-center justify-between">
-                <h2 class="text-2xl font-bold text-white flex items-center gap-3">
-                    <i class="fa-solid fa-book-bookmark text-[#8b5cf6]"></i>
-                    <span class="text-purple-gradient">研究日誌</span>
+            <div class="border-b border-gray-200 pb-4 flex items-center justify-between">
+                <h2 class="text-2xl font-bold text-gray-800 flex items-center gap-3">
+                    <i class="fa-solid fa-book-bookmark text-emerald-500"></i>
+                    <span class="text-green-gradient">研究日誌</span>
                 </h2>
-                <span class="text-sm text-gray-400">進捗・活動記録</span>
+                <span class="text-sm text-gray-500">進捗・活動記録</span>
             </div>
 
             <!-- 空白カードのグリッド配置 (2列) -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 
                 <!-- 枠 1 -->
-                <article class="bg-[#161823] border border-[#2a2d3d] rounded-xl p-6 hover:border-[#8b5cf6]/50 transition duration-200 flex flex-col justify-between">
+                <article class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:border-emerald-400 hover:shadow-md transition duration-200 flex flex-col justify-between">
                     <div>
-                        <div class="flex items-center justify-between text-sm text-gray-400 mb-3">
+                        <div class="flex items-center justify-between text-sm text-gray-500 mb-3">
                             <span class="flex items-center gap-2">
-                                <i class="fa-regular fa-calendar"></i> 年.月.日
+                                <i class="fa-regular fa-calendar text-emerald-600"></i> 年.月.日
                             </span>
-                            <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#8b5cf6]/20 text-[#c4b5fd] border border-[#8b5cf6]/30">
+                            <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
                                 カテゴリ
                             </span>
                         </div>
-                        <h3 class="text-lg font-semibold text-gray-300 mb-2 border-b border-[#2a2d3d] pb-2 border-dashed">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2 border-b border-gray-200 pb-2 border-dashed">
                             第1回：タイトルを入力
                         </h3>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-4 min-h-[60px]">
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4 min-h-[60px]">
                             ここに活動内容、進捗、考察などを入力してください...
                         </p>
                     </div>
                     <div class="flex items-center gap-2 text-xs text-gray-500">
-                        <span class="bg-[#2a2d3d] px-2 py-1 rounded">#タグ1</span>
-                        <span class="bg-[#2a2d3d] px-2 py-1 rounded">#タグ2</span>
+                        <span class="bg-gray-100 px-2 py-1 rounded border border-gray-200">#タグ1</span>
+                        <span class="bg-gray-100 px-2 py-1 rounded border border-gray-200">#タグ2</span>
                     </div>
                 </article>
 
                 <!-- 枠 2 -->
-                <article class="bg-[#161823] border border-[#2a2d3d] rounded-xl p-6 hover:border-[#8b5cf6]/50 transition duration-200 flex flex-col justify-between">
+                <article class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:border-emerald-400 hover:shadow-md transition duration-200 flex flex-col justify-between">
                     <div>
-                        <div class="flex items-center justify-between text-sm text-gray-400 mb-3">
+                        <div class="flex items-center justify-between text-sm text-gray-500 mb-3">
                             <span class="flex items-center gap-2">
-                                <i class="fa-regular fa-calendar"></i> 年.月.日
+                                <i class="fa-regular fa-calendar text-emerald-600"></i> 年.月.日
                             </span>
-                            <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#8b5cf6]/20 text-[#c4b5fd] border border-[#8b5cf6]/30">
+                            <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
                                 カテゴリ
                             </span>
                         </div>
-                        <h3 class="text-lg font-semibold text-gray-300 mb-2 border-b border-[#2a2d3d] pb-2 border-dashed">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2 border-b border-gray-200 pb-2 border-dashed">
                             第2回：タイトルを入力
                         </h3>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-4 min-h-[60px]">
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4 min-h-[60px]">
                             ここに活動内容、進捗、考察などを入力してください...
                         </p>
                     </div>
                     <div class="flex items-center gap-2 text-xs text-gray-500">
-                        <span class="bg-[#2a2d3d] px-2 py-1 rounded">#タグ1</span>
-                        <span class="bg-[#2a2d3d] px-2 py-1 rounded">#タグ2</span>
+                        <span class="bg-gray-100 px-2 py-1 rounded border border-gray-200">#タグ1</span>
+                        <span class="bg-gray-100 px-2 py-1 rounded border border-gray-200">#タグ2</span>
                     </div>
                 </article>
 
                 <!-- 枠 3 -->
-                <article class="bg-[#161823] border border-[#2a2d3d] rounded-xl p-6 hover:border-[#8b5cf6]/50 transition duration-200 flex flex-col justify-between">
+                <article class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:border-emerald-400 hover:shadow-md transition duration-200 flex flex-col justify-between">
                     <div>
-                        <div class="flex items-center justify-between text-sm text-gray-400 mb-3">
+                        <div class="flex items-center justify-between text-sm text-gray-500 mb-3">
                             <span class="flex items-center gap-2">
-                                <i class="fa-regular fa-calendar"></i> 年.月.日
+                                <i class="fa-regular fa-calendar text-emerald-600"></i> 年.月.日
                             </span>
-                            <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#8b5cf6]/20 text-[#c4b5fd] border border-[#8b5cf6]/30">
+                            <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
                                 カテゴリ
                             </span>
                         </div>
-                        <h3 class="text-lg font-semibold text-gray-300 mb-2 border-b border-[#2a2d3d] pb-2 border-dashed">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2 border-b border-gray-200 pb-2 border-dashed">
                             第3回：タイトルを入力
                         </h3>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-4 min-h-[60px]">
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4 min-h-[60px]">
                             ここに活動内容、進捗、考察などを入力してください...
                         </p>
                     </div>
                     <div class="flex items-center gap-2 text-xs text-gray-500">
-                        <span class="bg-[#2a2d3d] px-2 py-1 rounded">#タグ1</span>
-                        <span class="bg-[#2a2d3d] px-2 py-1 rounded">#タグ2</span>
+                        <span class="bg-gray-100 px-2 py-1 rounded border border-gray-200">#タグ1</span>
+                        <span class="bg-gray-100 px-2 py-1 rounded border border-gray-200">#タグ2</span>
                     </div>
                 </article>
 
                 <!-- 枠 4 -->
-                <article class="bg-[#161823] border border-[#2a2d3d] rounded-xl p-6 hover:border-[#8b5cf6]/50 transition duration-200 flex flex-col justify-between">
+                <article class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:border-emerald-400 hover:shadow-md transition duration-200 flex flex-col justify-between">
                     <div>
-                        <div class="flex items-center justify-between text-sm text-gray-400 mb-3">
+                        <div class="flex items-center justify-between text-sm text-gray-500 mb-3">
                             <span class="flex items-center gap-2">
-                                <i class="fa-regular fa-calendar"></i> 年.月.日
+                                <i class="fa-regular fa-calendar text-emerald-600"></i> 年.月.日
                             </span>
-                            <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#8b5cf6]/20 text-[#c4b5fd] border border-[#8b5cf6]/30">
+                            <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
                                 カテゴリ
                             </span>
                         </div>
-                        <h3 class="text-lg font-semibold text-gray-300 mb-2 border-b border-[#2a2d3d] pb-2 border-dashed">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2 border-b border-gray-200 pb-2 border-dashed">
                             第4回：タイトルを入力
                         </h3>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-4 min-h-[60px]">
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4 min-h-[60px]">
                             ここに活動内容、進捗、考察などを入力してください...
                         </p>
                     </div>
                     <div class="flex items-center gap-2 text-xs text-gray-500">
-                        <span class="bg-[#2a2d3d] px-2 py-1 rounded">#タグ1</span>
-                        <span class="bg-[#2a2d3d] px-2 py-1 rounded">#タグ2</span>
+                        <span class="bg-gray-100 px-2 py-1 rounded border border-gray-200">#タグ1</span>
+                        <span class="bg-gray-100 px-2 py-1 rounded border border-gray-200">#タグ2</span>
                     </div>
                 </article>
 
                 <!-- 枠 5 -->
-                <article class="bg-[#161823] border border-[#2a2d3d] rounded-xl p-6 hover:border-[#8b5cf6]/50 transition duration-200 flex flex-col justify-between">
+                <article class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:border-emerald-400 hover:shadow-md transition duration-200 flex flex-col justify-between">
                     <div>
-                        <div class="flex items-center justify-between text-sm text-gray-400 mb-3">
+                        <div class="flex items-center justify-between text-sm text-gray-500 mb-3">
                             <span class="flex items-center gap-2">
-                                <i class="fa-regular fa-calendar"></i> 年.月.日
+                                <i class="fa-regular fa-calendar text-emerald-600"></i> 年.月.日
                             </span>
-                            <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#8b5cf6]/20 text-[#c4b5fd] border border-[#8b5cf6]/30">
+                            <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
                                 カテゴリ
                             </span>
                         </div>
-                        <h3 class="text-lg font-semibold text-gray-300 mb-2 border-b border-[#2a2d3d] pb-2 border-dashed">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2 border-b border-gray-200 pb-2 border-dashed">
                             第5回：タイトルを入力
                         </h3>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-4 min-h-[60px]">
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4 min-h-[60px]">
                             ここに活動内容、進捗、考察などを入力してください...
                         </p>
                     </div>
                     <div class="flex items-center gap-2 text-xs text-gray-500">
-                        <span class="bg-[#2a2d3d] px-2 py-1 rounded">#タグ1</span>
-                        <span class="bg-[#2a2d3d] px-2 py-1 rounded">#タグ2</span>
+                        <span class="bg-gray-100 px-2 py-1 rounded border border-gray-200">#タグ1</span>
+                        <span class="bg-gray-100 px-2 py-1 rounded border border-gray-200">#タグ2</span>
                     </div>
                 </article>
 
                 <!-- 枠 6 -->
-                <article class="bg-[#161823] border border-[#2a2d3d] rounded-xl p-6 hover:border-[#8b5cf6]/50 transition duration-200 flex flex-col justify-between">
+                <article class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:border-emerald-400 hover:shadow-md transition duration-200 flex flex-col justify-between">
                     <div>
-                        <div class="flex items-center justify-between text-sm text-gray-400 mb-3">
+                        <div class="flex items-center justify-between text-sm text-gray-500 mb-3">
                             <span class="flex items-center gap-2">
-                                <i class="fa-regular fa-calendar"></i> 年.月.日
+                                <i class="fa-regular fa-calendar text-emerald-600"></i> 年.月.日
                             </span>
-                            <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#8b5cf6]/20 text-[#c4b5fd] border border-[#8b5cf6]/30">
+                            <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
                                 カテゴリ
                             </span>
                         </div>
-                        <h3 class="text-lg font-semibold text-gray-300 mb-2 border-b border-[#2a2d3d] pb-2 border-dashed">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2 border-b border-gray-200 pb-2 border-dashed">
                             第6回：タイトルを入力
                         </h3>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-4 min-h-[60px]">
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4 min-h-[60px]">
                             ここに活動内容、進捗、考察などを入力してください...
                         </p>
                     </div>
                     <div class="flex items-center gap-2 text-xs text-gray-500">
-                        <span class="bg-[#2a2d3d] px-2 py-1 rounded">#タグ1</span>
-                        <span class="bg-[#2a2d3d] px-2 py-1 rounded">#タグ2</span>
+                        <span class="bg-gray-100 px-2 py-1 rounded border border-gray-200">#タグ1</span>
+                        <span class="bg-gray-100 px-2 py-1 rounded border border-gray-200">#タグ2</span>
                     </div>
                 </article>
 
@@ -364,7 +360,7 @@
     </main>
 
     <!-- フッター -->
-    <footer class="border-t border-[#2a2d3d] mt-16 py-8 text-center text-sm text-gray-500">
+    <footer class="border-t border-gray-200 mt-16 py-8 text-center text-sm text-gray-500">
         <p>&copy; 2026 市川工業高等学校 電気科 課題研究 4班</p>
     </footer>
 
