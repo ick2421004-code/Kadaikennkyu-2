@@ -1,302 +1,75 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>市川工業高等学校 電気科 課題研究 4班</title>
-    
-    <!-- Tailwind CSS & Font Awesome CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        /* 1. 変数定義（ライト＆ナチュラルグリーンテーマ） */
-        :root {
-            --bg-light: #f8fafc;
-            --card-light: #ffffff;
-            --border-light: #e2e8f0;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --green-primary: #10b981;
-            --green-deep: #059669;
-            --green-light: #dcfce7;
-        }
+<!-- 研究概要・目的 -->
+<section id="overview" class="space-y-4">
+    <div class="border-b border-gray-200 pb-4 flex items-center justify-between">
+        <h2 class="text-2xl font-bold text-gray-800 flex items-center gap-3">
+            <i class="fa-solid fa-bullseye text-emerald-500"></i>
+            <span class="text-green-gradient">研究概要・目的</span>
+        </h2>
+    </div>
 
-        body {
-            background-color: var(--bg-light);
-            color: var(--text-main);
-            font-family: 'Inter', sans-serif;
-            min-height: 100vh;
-        }
-
-        section {
-            scroll-margin-top: 80px;
-        }
-
-        /* 癒し＆高級感のあるグラデーション */
-        .text-green-gradient {
-            background: linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .bg-green-gradient {
-            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
-        }
-
-        /* カスタムスクロールバー */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--bg-light);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #a7f3d0;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--green-primary);
-        }
-
-        /* ナビゲーションスタイル */
-        .nav-link {
-            transition: all 0.2s ease;
-            color: #4b5563;
-            padding: 0.5rem 0.75rem;
-            border-radius: 0.375rem;
-            font-size: 0.875rem;
-            font-weight: 500;
-        }
-        .nav-link:hover {
-            color: #059669;
-            background-color: rgba(16, 185, 129, 0.08);
-        }
-    </style>
-</head>
-<body class="antialiased">
-
-    <!-- 固定ヘッダー & 右上ナビゲーション -->
-    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
+    <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
-            <!-- ロゴエリア -->
-            <div class="flex items-center space-x-3">
-                <div class="w-9 h-9 rounded-xl bg-emerald-100 border border-emerald-300 flex items-center justify-center text-emerald-600 shadow-inner">
-                    <i class="fa-solid fa-bolt text-emerald-600 text-lg"></i>
-                </div>
-                <span class="text-sm md:text-base font-bold text-gray-800 tracking-wide">
-                    市川工業高等学校 電気科 課題研究 <span class="text-green-gradient">4班</span>
-                </span>
-            </div>
-
-            <!-- 右上ナビゲーション -->
-            <nav class="hidden lg:flex items-center space-x-1">
-                <a href="#overview" class="nav-link">研究概要・目的</a>
-                <a href="#background" class="nav-link">研究背景</a>
-                <a href="#applications" class="nav-link">使用用途</a>
-                <a href="#experiments" class="nav-link">実験</a>
-                <a href="#challenges" class="nav-link">課題と進捗</a>
-            </nav>
-            
-        </div>
-    </header>
-
-    <!-- メインコンテンツ領域 -->
-    <main class="max-w-7xl mx-auto px-4 py-8 space-y-12">
-        
-        <!-- 研究概要・目的 -->
-        <section id="overview" class="space-y-4">
-            <div class="border-b border-gray-200 pb-4 flex items-center justify-between">
-                <h2 class="text-2xl font-bold text-gray-800 flex items-center gap-3">
-                    <i class="fa-solid fa-bullseye text-emerald-500"></i>
-                    <span class="text-green-gradient">研究概要・目的</span>
-                </h2>
-            </div>
-            <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-                <p class="text-gray-600 leading-relaxed">❶人の手の届かない場所へ駆けつけ、カメラで人を目視でき、遠隔操作できる災害捜索用ミニカーをつくる。<br>
-❷災害時にリアルタイムで捜索し被災者等の早期発見を目指し、救助活動を円滑化する。</p>
-            </div>
-        </section>
-
-        <!-- 研究背景 -->
-        <section id="background" class="space-y-4">
-            <div class="border-b border-gray-200 pb-4 flex items-center justify-between">
-                <h2 class="text-2xl font-bold text-gray-800 flex items-center gap-3">
-                    <i class="fa-solid fa-book-open text-emerald-500"></i>
-                    <span class="text-green-gradient">研究背景</span>
-                </h2>
-            </div>
-            <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-                <p class="text-gray-600 leading-relaxed">地震などの災害時には、建物の倒壊などで人が通れない悪路や、二次災害により、安全の確保ができない危険地帯が生まれる。
-要救助者の早期発見を図り、早急な対処をし救助隊の支援を少しでも早く行う手助けになれば良いと考えた。</p>
-            </div>
-        </section>
-
-        <!-- 使用用途 -->
-        <section id="applications" class="space-y-4">
-            <div class="border-b border-gray-200 pb-4 flex items-center justify-between">
-                <h2 class="text-2xl font-bold text-gray-800 flex items-center gap-3">
-                    <i class="fa-solid fa-lightbulb text-emerald-500"></i>
-                    <span class="text-green-gradient">使用用途</span>
-                </h2>
-            </div>
-            <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-                <p class="text-gray-600 leading-relaxed">人間の入れないような小さな空間内の探索および要救助者の捜索</p>
-            </div>
-        </section>
-
-        <!-- 実験 -->
-        <section id="experiments" class="space-y-4">
-            <div class="border-b border-gray-200 pb-4 flex items-center justify-between">
-                <h2 class="text-2xl font-bold text-gray-800 flex items-center gap-3">
-                    <i class="fa-solid fa-vial text-emerald-500"></i>
-                    <span class="text-green-gradient">実験</span>
-                </h2>
-            </div>
-            <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-                <p class="text-gray-600 leading-relaxed">ここに実験内容を入力してください。</p>
-            </div>
-        </section>
-
-        <!-- 【豪華版】課題と進捗管理セクション -->
-        <section id="challenges" class="space-y-6">
-            
-            <!-- セクションタイトル -->
-            <div class="border-b border-gray-200 pb-4 flex flex-wrap items-end justify-between gap-2">
-                <h2 class="text-2xl font-bold text-gray-800 flex items-center gap-3">
-                    <div class="w-9 h-9 rounded-xl bg-emerald-500 text-white flex items-center justify-center shadow-md shadow-emerald-200">
-                        <i class="fa-solid fa-list-check"></i>
-                    </div>
-                    <span class="text-green-gradient">課題とロードマップ</span>
-                </h2>
-                <span class="text-xs md:text-sm font-medium text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
-                    <i class="fa-solid fa-arrows-spin mr-1 animate-spin"></i> 4段階フェーズで解決推進中
-                </span>
-            </div>
-
-            <!-- 全体進捗バーカード -->
-            <div class="bg-white border border-emerald-100 rounded-2xl p-6 shadow-sm relative overflow-hidden">
-                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
-                    <div>
-                        <h3 class="text-base font-bold text-gray-800 flex items-center gap-2">
-                            <i class="fa-solid fa-chart-line text-emerald-500"></i>
-                            現在のプロジェクト進捗状況
-                        </h3>
-                        <p class="text-xs text-gray-500 mt-1">
-                            課題の洗い出しから最終調整までのトータル達成度
+            <!-- 左側：目的・概要テキスト & 機体構成要素 -->
+            <div class="lg:col-span-7 space-y-6">
+                <!-- 目的箇条書き -->
+                <div class="space-y-4">
+                    <div class="flex items-start gap-3">
+                        <span class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 font-bold flex items-center justify-center shrink-0 text-sm mt-0.5">1</span>
+                        <p class="text-gray-700 leading-relaxed">
+                            人の手が届かない場所へ駆けつけ、カメラ画像でリアルタイムに被災者を目視確認・遠隔操作できる「災害捜索用ミニカー」を開発する。
                         </p>
                     </div>
-                    <!-- 進捗パーセンテージ -->
-                    <div class="flex items-baseline gap-1 self-start md:self-auto">
-                        <span class="text-xs font-semibold text-gray-400">達成度:</span>
-                        <span class="text-3xl font-black text-emerald-600">50</span>
-                        <span class="text-lg font-bold text-emerald-600">%</span>
+                    <div class="flex items-start gap-3">
+                        <span class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 font-bold flex items-center justify-center shrink-0 text-sm mt-0.5">2</span>
+                        <p class="text-gray-700 leading-relaxed">
+                            災害時にリアルタイムで捜索し要救助者等の早期発見を目指し、救助活動を円滑化・迅速化する。
+                        </p>
                     </div>
                 </div>
 
-                <!-- プログレスバー背景 -->
-                <div class="w-full bg-gray-100 h-3.5 rounded-full overflow-hidden p-0.5 border border-gray-200">
-                    <div class="bg-green-gradient h-full rounded-full transition-all duration-1000 shadow-sm" style="width: 50%;"></div>
+                <!-- スケッチから抽出した機体構成要素（ハイライト表示） -->
+                <div class="border-t border-gray-100 pt-5">
+                    <h3 class="text-xs font-bold text-gray-400 tracking-wider uppercase mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-microchip text-emerald-500"></i> 機体設計仕様（SW0号）
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-semibold">
+                            <i class="fa-solid fa-microchip"></i> Raspberry Pi（制御マイコン）
+                        </span>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-semibold">
+                            <i class="fa-solid fa-camera"></i> カメラ
+                        </span>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-semibold">
+                            <i class="fa-solid fa-layer-group"></i> ユニバーサル基板回路
+                        </span>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-semibold">
+                            <i class="fa-solid fa-shield-halved"></i> キャタピラ
+                        </span>
+                    </div>
                 </div>
             </div>
 
-            <!-- 4段階進捗カード（2×2グリッド） -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 relative">
-                
-                <!-- STEP 1 (完了) -->
-                <article class="bg-white border-l-4 border-l-emerald-500 border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition duration-300 relative group">
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="flex items-center gap-2">
-                            <span class="w-7 h-7 rounded-lg bg-emerald-500 text-white font-bold text-xs flex items-center justify-center shadow-sm">
-                                01
-                            </span>
-                            <span class="text-xs font-bold text-emerald-700 tracking-wider">PHASE 1</span>
-                        </div>
-                        <span class="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 border border-emerald-200">
-                            <i class="fa-solid fa-circle-check text-emerald-500"></i> 完了
-                        </span>
+            <!-- 右側：完成予想図（スケッチ画像）展示カード -->
+            <div class="lg:col-span-5">
+                <div class="bg-slate-50 border border-gray-200 rounded-xl p-4 relative group">
+                    <!-- 機体名タグ -->
+                    <div class="absolute top-6 left-6 z-10 bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md flex items-center gap-1.5">
+                        <i class="fa-solid fa-robot"></i> 開発機体: SW0号
                     </div>
-                    <h3 class="text-lg font-bold text-gray-800 mb-2 group-hover:text-emerald-600 transition-colors">
-                        作成部品の選定・プログラミング
-                    </h3>
-                    <p class="text-gray-600 text-sm leading-relaxed border-t border-gray-100 pt-3">
-                        プログラミング、部品注文が完了して設計図もできた
-                    </p>
-                </article>
 
-                <!-- STEP 2 (進行中) -->
-                <article class="bg-white border-l-4 border-l-amber-500 border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition duration-300 relative group">
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="flex items-center gap-2">
-                            <span class="w-7 h-7 rounded-lg bg-amber-500 text-white font-bold text-xs flex items-center justify-center shadow-sm">
-                                02
-                            </span>
-                            <span class="text-xs font-bold text-amber-700 tracking-wider">PHASE 2</span>
-                        </div>
-                        <span class="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-full bg-amber-50 text-amber-700 border border-amber-200">
-                            <i class="fa-solid fa-spinner animate-spin text-amber-500"></i> 進行中
-                        </span>
+                    <!-- 画像コンテナ -->
+                    <div class="overflow-hidden rounded-lg bg-white border border-gray-200 p-2 shadow-inner flex items-center justify-center">
+                        <img src="sw0_sketch.png" alt="SW0号 完成予想図スケッチ" class="w-full h-auto object-contain max-h-64 group-hover:scale-105 transition-transform duration-300">
                     </div>
-                    <h3 class="text-lg font-bold text-gray-800 mb-2 group-hover:text-amber-600 transition-colors">
-                        車体の作成
-                    </h3>
-                    <p class="text-gray-600 text-sm leading-relaxed border-t border-gray-100 pt-3">
-                        仮
-                    </p>
-                </article>
 
-                <!-- STEP 3 (未着手) -->
-                <article class="bg-white border-l-4 border-l-gray-300 border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition duration-300 relative group opacity-90 hover:opacity-100">
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="flex items-center gap-2">
-                            <span class="w-7 h-7 rounded-lg bg-gray-400 text-white font-bold text-xs flex items-center justify-center shadow-sm">
-                                03
-                            </span>
-                            <span class="text-xs font-bold text-gray-500 tracking-wider">PHASE 3</span>
-                        </div>
-                        <span class="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-full bg-gray-100 text-gray-600 border border-gray-200">
-                            <i class="fa-regular fa-clock text-gray-400"></i> 未着手
-                        </span>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-800 mb-2 group-hover:text-emerald-600 transition-colors">
-                        試作・テスト
-                    </h3>
-                    <p class="text-gray-500 text-sm leading-relaxed border-t border-gray-100 pt-3">
-                        仮
+                    <!-- キャプション -->
+                    <p class="text-xs text-center text-gray-500 mt-3 font-medium">
+                        ▲ 開発車両「SW0号」の完成予想スケッチ
                     </p>
-                </article>
-
-                <!-- STEP 4 (未着手) -->
-                <article class="bg-white border-l-4 border-l-gray-300 border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition duration-300 relative group opacity-90 hover:opacity-100">
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="flex items-center gap-2">
-                            <span class="w-7 h-7 rounded-lg bg-gray-400 text-white font-bold text-xs flex items-center justify-center shadow-sm">
-                                04
-                            </span>
-                            <span class="text-xs font-bold text-gray-500 tracking-wider">PHASE 4</span>
-                        </div>
-                        <span class="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-full bg-gray-100 text-gray-600 border border-gray-200">
-                            <i class="fa-regular fa-clock text-gray-400"></i> 未着手
-                        </span>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-800 mb-2 group-hover:text-emerald-600 transition-colors">
-                        評価・最終調整
-                    </h3>
-                    <p class="text-gray-500 text-sm leading-relaxed border-t border-gray-100 pt-3">
-                        仮
-                    </p>
-                </article>
-
+                </div>
             </div>
-        </section>
 
-    </main>
-
-    <!-- フッター -->
-    <footer class="border-t border-gray-200 mt-16 py-8 text-center text-sm text-gray-500">
-        <p>&copy; 2026 市川工業高等学校 電気科 課題研究 4班</p>
-    </footer>
-
-</body>
-</html>
+        </div>
+    </div>
+</section>
