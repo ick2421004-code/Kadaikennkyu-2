@@ -71,11 +71,6 @@
             color: #059669;
             background-color: rgba(16, 185, 129, 0.08);
         }
-        .nav-link.active {
-            color: var(--green-deep);
-            border-bottom: 2px solid var(--green-primary);
-            background-color: rgba(16, 185, 129, 0.12);
-        }
     </style>
 </head>
 <body class="antialiased">
@@ -100,8 +95,7 @@
                 <a href="#background" class="nav-link">研究背景</a>
                 <a href="#applications" class="nav-link">使用用途</a>
                 <a href="#experiments" class="nav-link">実験</a>
-                <a href="#challenges" class="nav-link">課題</a>
-                <a href="#journal" class="nav-link">研究日誌</a>
+                <a href="#challenges" class="nav-link">課題と進捗</a>
             </nav>
             
         </div>
@@ -164,129 +158,96 @@
             </div>
         </section>
 
-        <!-- 課題 -->
-        <section id="challenges" class="space-y-4">
+        <!-- 課題と進捗（4段階構成） -->
+        <section id="challenges" class="space-y-6">
             <div class="border-b border-gray-200 pb-4 flex items-center justify-between">
                 <h2 class="text-2xl font-bold text-gray-800 flex items-center gap-3">
                     <i class="fa-solid fa-triangle-exclamation text-emerald-500"></i>
-                    <span class="text-green-gradient">課題</span>
+                    <span class="text-green-gradient">課題と進捗管理</span>
                 </h2>
+                <span class="text-sm text-gray-500">4段階の解決フェーズ</span>
             </div>
+
+            <!-- 概要テキスト領域 -->
             <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-                <p class="text-gray-600 leading-relaxed">ここに現在の課題や今後の展開を入力してください。</p>
-            </div>
-        </section>
-
-        <!-- 【研究日誌セクション (空白枠6個)】 -->
-        <section id="journal" class="space-y-6">
-            <div class="border-b border-gray-200 pb-4 flex items-center justify-between">
-                <h2 class="text-2xl font-bold text-gray-800 flex items-center gap-3">
-                    <i class="fa-solid fa-book-bookmark text-emerald-500"></i>
-                    <span class="text-green-gradient">研究日誌</span>
-                </h2>
-                <span class="text-sm text-gray-500">進捗・活動記録</span>
+                <p class="text-gray-600 leading-relaxed">
+                    制作過程で発生した技術的・構造的課題の抽出から、解決・実装までの進捗状況を以下の4つの段階で管理しています。
+                </p>
             </div>
 
-            <!-- 空白カードのグリッド配置 (2列) -->
+            <!-- 4段階の進捗グリッド -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 
-                <!-- 枠 1 -->
-                <article class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:border-emerald-400 hover:shadow-md transition duration-200 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between text-sm text-gray-500 mb-3">
-                            <span class="flex items-center gap-2">
-                                <i class="fa-regular fa-calendar text-emerald-600"></i> 2026年.5月.28日
-                            </span>
-                        </div>
-                        <h3 class="text-lg font-semibold text-gray-800 border-b border-gray-200 pb-2 border-dashed">
-                            購入物品の選定、役割決め
-                        </h3>
+                <!-- 段階 1 -->
+                <article class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:border-emerald-400 hover:shadow-md transition duration-200">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700">
+                            STEP 01
+                        </span>
+                        <span class="text-xs font-medium px-2 py-0.5 rounded border border-emerald-300 text-emerald-600 bg-emerald-50">
+                            完了 / 検討中
+                        </span>
                     </div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2 border-b border-gray-200 pb-2">
+                        1. 課題の抽出・特定
+                    </h3>
+                    <p class="text-gray-600 text-sm leading-relaxed min-h-[60px]">
+                        （例: 悪路走行時のサスペンション強度不足、映像伝送の遅延問題など、判明した課題を入力）
+                    </p>
                 </article>
 
-                <!-- 枠 2 -->
-                <article class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:border-emerald-400 hover:shadow-md transition duration-200 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between text-sm text-gray-500 mb-3">
-                            <span class="flex items-center gap-2">
-                                <i class="fa-regular fa-calendar text-emerald-600"></i> 年.月.日
-                            </span>
-                        </div>
-                        <h3 class="text-lg font-semibold text-gray-800 mb-2 border-b border-gray-200 pb-2 border-dashed">
-                            タイトルを入力
-                        </h3>
-                        <p class="text-gray-400 text-sm leading-relaxed min-h-[60px]">
-                            ここに活動内容、進捗、考察などを入力してください...
-                        </p>
+                <!-- 段階 2 -->
+                <article class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:border-emerald-400 hover:shadow-md transition duration-200">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700">
+                            STEP 02
+                        </span>
+                        <span class="text-xs font-medium px-2 py-0.5 rounded border border-amber-300 text-amber-600 bg-amber-50">
+                            進行中
+                        </span>
                     </div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2 border-b border-gray-200 pb-2">
+                        2. 原因分析・解決案の設計
+                    </h3>
+                    <p class="text-gray-600 text-sm leading-relaxed min-h-[60px]">
+                        （例: 回路の改良、モーターの選定見直し、フレーム構造の設計変更方針など）
+                    </p>
                 </article>
 
-                <!-- 枠 3 -->
-                <article class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:border-emerald-400 hover:shadow-md transition duration-200 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between text-sm text-gray-500 mb-3">
-                            <span class="flex items-center gap-2">
-                                <i class="fa-regular fa-calendar text-emerald-600"></i> 年.月.日
-                            </span>
-                        </div>
-                        <h3 class="text-lg font-semibold text-gray-800 mb-2 border-b border-gray-200 pb-2 border-dashed">
-                            タイトルを入力
-                        </h3>
-                        <p class="text-gray-400 text-sm leading-relaxed min-h-[60px]">
-                            ここに活動内容、進捗、考察などを入力してください...
-                        </p>
+                <!-- 段階 3 -->
+                <article class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:border-emerald-400 hover:shadow-md transition duration-200">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700">
+                            STEP 03
+                        </span>
+                        <span class="text-xs font-medium px-2 py-0.5 rounded border border-gray-300 text-gray-500 bg-gray-50">
+                            未着手
+                        </span>
                     </div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2 border-b border-gray-200 pb-2">
+                        3. 試作・実装・テスト
+                    </h3>
+                    <p class="text-gray-600 text-sm leading-relaxed min-h-[60px]">
+                        （例: 改良版パーツの組み込みと実機での検証実験内容）
+                    </p>
                 </article>
 
-                <!-- 枠 4 -->
-                <article class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:border-emerald-400 hover:shadow-md transition duration-200 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between text-sm text-gray-500 mb-3">
-                            <span class="flex items-center gap-2">
-                                <i class="fa-regular fa-calendar text-emerald-600"></i> 年.月.日
-                            </span>
-                        </div>
-                        <h3 class="text-lg font-semibold text-gray-800 mb-2 border-b border-gray-200 pb-2 border-dashed">
-                            タイトルを入力
-                        </h3>
-                        <p class="text-gray-400 text-sm leading-relaxed min-h-[60px]">
-                            ここに活動内容、進捗、考察などを入力してください...
-                        </p>
+                <!-- 段階 4 -->
+                <article class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:border-emerald-400 hover:shadow-md transition duration-200">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700">
+                            STEP 04
+                        </span>
+                        <span class="text-xs font-medium px-2 py-0.5 rounded border border-gray-300 text-gray-500 bg-gray-50">
+                            未着手
+                        </span>
                     </div>
-                </article>
-
-                <!-- 枠 5 -->
-                <article class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:border-emerald-400 hover:shadow-md transition duration-200 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between text-sm text-gray-500 mb-3">
-                            <span class="flex items-center gap-2">
-                                <i class="fa-regular fa-calendar text-emerald-600"></i> 年.月.日
-                            </span>
-                        </div>
-                        <h3 class="text-lg font-semibold text-gray-800 mb-2 border-b border-gray-200 pb-2 border-dashed">
-                            タイトルを入力
-                        </h3>
-                        <p class="text-gray-400 text-sm leading-relaxed min-h-[60px]">
-                            ここに活動内容、進捗、考察などを入力してください...
-                        </p>
-                    </div>
-                </article>
-
-                <!-- 枠 6 -->
-                <article class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:border-emerald-400 hover:shadow-md transition duration-200 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between text-sm text-gray-500 mb-3">
-                            <span class="flex items-center gap-2">
-                                <i class="fa-regular fa-calendar text-emerald-600"></i> 年.月.日
-                            </span>
-                        </div>
-                        <h3 class="text-lg font-semibold text-gray-800 mb-2 border-b border-gray-200 pb-2 border-dashed">
-                            タイトルを入力
-                        </h3>
-                        <p class="text-gray-400 text-sm leading-relaxed min-h-[60px]">
-                            ここに活動内容、進捗、考察などを入力してください...
-                        </p>
-                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2 border-b border-gray-200 pb-2">
+                        4. 評価・最終調整
+                    </h3>
+                    <p class="text-gray-600 text-sm leading-relaxed min-h-[60px]">
+                        （例: 改善後の成果測定、完成度の確認および今後の展望）
+                    </p>
                 </article>
 
             </div>
