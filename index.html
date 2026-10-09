@@ -10,20 +10,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* 1. 変数定義（ライト＆ナチュラルグリーンテーマの設定） */
+        /* 1. 変数定義（ライト＆ナチュラルグリーンテーマ） */
         :root {
-            --bg-light: #f8fafc;         /* 全体背景色（清潔感のあるオフホワイト） */
-            --card-light: #ffffff;       /* カード背景色（純白） */
-            --border-light: #e2e8f0;     /* 枠線色 */
-            --text-main: #1e293b;        /* 主な文字色（ダークグレー） */
-            --text-muted: #64748b;       /* 補足文字色 */
-            --green-primary: #10b981;    /* メインの癒しグリーン */
-            --green-deep: #059669;       /* 濃いグリーン */
-            --green-light: #dcfce7;      /* 明るいグリーン（バッジ等） */
-            --green-glow: rgba(16, 185, 129, 0.12); /* カードホバー用の柔らかい光沢 */
+            --bg-light: #f8fafc;
+            --card-light: #ffffff;
+            --border-light: #e2e8f0;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --green-primary: #10b981;
+            --green-deep: #059669;
+            --green-light: #dcfce7;
         }
 
-        /* 2. 基本スタイル & スクロール設定 */
         body {
             background-color: var(--bg-light);
             color: var(--text-main);
@@ -31,19 +29,22 @@
             min-height: 100vh;
         }
 
-        /* 固定ヘッダー時のスクロール位置ズレ防止 */
         section {
             scroll-margin-top: 80px;
         }
 
-        /* 癒し効果のあるグリーングラデーションテキスト */
+        /* 癒し＆高級感のあるグラデーション */
         .text-green-gradient {
             background: linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        /* グリーンのカスタムスクロールバー */
+        .bg-green-gradient {
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+        }
+
+        /* カスタムスクロールバー */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -76,15 +77,15 @@
 <body class="antialiased">
 
     <!-- 固定ヘッダー & 右上ナビゲーション -->
-    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
             
-            <!-- ロゴエリア (1行表示) -->
+            <!-- ロゴエリア -->
             <div class="flex items-center space-x-3">
-                <div class="w-8 h-8 rounded-lg bg-emerald-100 border border-emerald-300 flex items-center justify-center text-emerald-600">
-                    <i class="fa-solid fa-bolt text-emerald-500"></i>
+                <div class="w-9 h-9 rounded-xl bg-emerald-100 border border-emerald-300 flex items-center justify-center text-emerald-600 shadow-inner">
+                    <i class="fa-solid fa-bolt text-emerald-600 text-lg"></i>
                 </div>
-                <span class="text-sm md:text-base font-bold text-gray-800">
+                <span class="text-sm md:text-base font-bold text-gray-800 tracking-wide">
                     市川工業高等学校 電気科 課題研究 <span class="text-green-gradient">4班</span>
                 </span>
             </div>
@@ -158,95 +159,132 @@
             </div>
         </section>
 
-        <!-- 課題と進捗（4段階構成） -->
+        <!-- 【豪華版】課題と進捗管理セクション -->
         <section id="challenges" class="space-y-6">
-            <div class="border-b border-gray-200 pb-4 flex items-center justify-between">
+            
+            <!-- セクションタイトル -->
+            <div class="border-b border-gray-200 pb-4 flex flex-wrap items-end justify-between gap-2">
                 <h2 class="text-2xl font-bold text-gray-800 flex items-center gap-3">
-                    <i class="fa-solid fa-triangle-exclamation text-emerald-500"></i>
-                    <span class="text-green-gradient">課題と進捗管理</span>
+                    <div class="w-9 h-9 rounded-xl bg-emerald-500 text-white flex items-center justify-center shadow-md shadow-emerald-200">
+                        <i class="fa-solid fa-list-check"></i>
+                    </div>
+                    <span class="text-green-gradient">課題とロードマップ</span>
                 </h2>
-                <span class="text-sm text-gray-500">4段階の解決フェーズ</span>
+                <span class="text-xs md:text-sm font-medium text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+                    <i class="fa-solid fa-arrows-spin mr-1 animate-spin"></i> 4段階フェーズで解決推進中
+                </span>
             </div>
 
-            <!-- 概要テキスト領域 -->
-            <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-                <p class="text-gray-600 leading-relaxed">
-                    制作過程で発生した技術的・構造的課題の抽出から、解決・実装までの進捗状況を以下の4つの段階で管理しています。
-                </p>
+            <!-- 全体進捗バーカード -->
+            <div class="bg-white border border-emerald-100 rounded-2xl p-6 shadow-sm relative overflow-hidden">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+                    <div>
+                        <h3 class="text-base font-bold text-gray-800 flex items-center gap-2">
+                            <i class="fa-solid fa-chart-line text-emerald-500"></i>
+                            現在のプロジェクト進捗状況
+                        </h3>
+                        <p class="text-xs text-gray-500 mt-1">
+                            課題の洗い出しから最終調整までのトータル達成度
+                        </p>
+                    </div>
+                    <!-- 進捗パーセンテージ -->
+                    <div class="flex items-baseline gap-1 self-start md:self-auto">
+                        <span class="text-xs font-semibold text-gray-400">達成度:</span>
+                        <span class="text-3xl font-black text-emerald-600">50</span>
+                        <span class="text-lg font-bold text-emerald-600">%</span>
+                    </div>
+                </div>
+
+                <!-- プログレスバー背景 -->
+                <div class="w-full bg-gray-100 h-3.5 rounded-full overflow-hidden p-0.5 border border-gray-200">
+                    <div class="bg-green-gradient h-full rounded-full transition-all duration-1000 shadow-sm" style="width: 50%;"></div>
+                </div>
             </div>
 
-            <!-- 4段階の進捗グリッド -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- 4段階進捗カード（2×2グリッド） -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 relative">
                 
-                <!-- 段階 1 -->
-                <article class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:border-emerald-400 hover:shadow-md transition duration-200">
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700">
-                            STEP 01
-                        </span>
-                        <span class="text-xs font-medium px-2 py-0.5 rounded border border-emerald-300 text-emerald-600 bg-emerald-50">
-                            完了 / 検討中
+                <!-- STEP 1 (完了) -->
+                <article class="bg-white border-l-4 border-l-emerald-500 border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition duration-300 relative group">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-2">
+                            <span class="w-7 h-7 rounded-lg bg-emerald-500 text-white font-bold text-xs flex items-center justify-center shadow-sm">
+                                01
+                            </span>
+                            <span class="text-xs font-bold text-emerald-700 tracking-wider">PHASE 1</span>
+                        </div>
+                        <span class="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 border border-emerald-200">
+                            <i class="fa-solid fa-circle-check text-emerald-500"></i> 完了
                         </span>
                     </div>
-                    <h3 class="text-lg font-bold text-gray-800 mb-2 border-b border-gray-200 pb-2">
-                        1. 課題の抽出・特定
+                    <h3 class="text-lg font-bold text-gray-800 mb-2 group-hover:text-emerald-600 transition-colors">
+                        課題の抽出・特定
                     </h3>
-                    <p class="text-gray-600 text-sm leading-relaxed min-h-[60px]">
-                        （例: 悪路走行時のサスペンション強度不足、映像伝送の遅延問題など、判明した課題を入力）
+                    <p class="text-gray-600 text-sm leading-relaxed border-t border-gray-100 pt-3">
+                        （例: 悪路走行時のサスペンション構造の脆弱性、カメラ映像におけるリアルタイム伝送のタイムラグ問題を特定）
                     </p>
                 </article>
 
-                <!-- 段階 2 -->
-                <article class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:border-emerald-400 hover:shadow-md transition duration-200">
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700">
-                            STEP 02
-                        </span>
-                        <span class="text-xs font-medium px-2 py-0.5 rounded border border-amber-300 text-amber-600 bg-amber-50">
-                            進行中
+                <!-- STEP 2 (進行中) -->
+                <article class="bg-white border-l-4 border-l-amber-500 border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition duration-300 relative group">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-2">
+                            <span class="w-7 h-7 rounded-lg bg-amber-500 text-white font-bold text-xs flex items-center justify-center shadow-sm">
+                                02
+                            </span>
+                            <span class="text-xs font-bold text-amber-700 tracking-wider">PHASE 2</span>
+                        </div>
+                        <span class="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-full bg-amber-50 text-amber-700 border border-amber-200">
+                            <i class="fa-solid fa-spinner animate-spin text-amber-500"></i> 進行中
                         </span>
                     </div>
-                    <h3 class="text-lg font-bold text-gray-800 mb-2 border-b border-gray-200 pb-2">
-                        2. 原因分析・解決案の設計
+                    <h3 class="text-lg font-bold text-gray-800 mb-2 group-hover:text-amber-600 transition-colors">
+                        原因分析・解決案の設計
                     </h3>
-                    <p class="text-gray-600 text-sm leading-relaxed min-h-[60px]">
-                        （例: 回路の改良、モーターの選定見直し、フレーム構造の設計変更方針など）
+                    <p class="text-gray-600 text-sm leading-relaxed border-t border-gray-100 pt-3">
+                        （例: ハイパワーモーターへの選定見直し、フレーム構造の3D CAD再設計、通信帯域の最適化を検証中）
                     </p>
                 </article>
 
-                <!-- 段階 3 -->
-                <article class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:border-emerald-400 hover:shadow-md transition duration-200">
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700">
-                            STEP 03
-                        </span>
-                        <span class="text-xs font-medium px-2 py-0.5 rounded border border-gray-300 text-gray-500 bg-gray-50">
-                            未着手
+                <!-- STEP 3 (未着手) -->
+                <article class="bg-white border-l-4 border-l-gray-300 border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition duration-300 relative group opacity-90 hover:opacity-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-2">
+                            <span class="w-7 h-7 rounded-lg bg-gray-400 text-white font-bold text-xs flex items-center justify-center shadow-sm">
+                                03
+                            </span>
+                            <span class="text-xs font-bold text-gray-500 tracking-wider">PHASE 3</span>
+                        </div>
+                        <span class="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-full bg-gray-100 text-gray-600 border border-gray-200">
+                            <i class="fa-regular fa-clock text-gray-400"></i> 未着手
                         </span>
                     </div>
-                    <h3 class="text-lg font-bold text-gray-800 mb-2 border-b border-gray-200 pb-2">
-                        3. 試作・実装・テスト
+                    <h3 class="text-lg font-bold text-gray-800 mb-2 group-hover:text-emerald-600 transition-colors">
+                        試作・実装・テスト
                     </h3>
-                    <p class="text-gray-600 text-sm leading-relaxed min-h-[60px]">
-                        （例: 改良版パーツの組み込みと実機での検証実験内容）
+                    <p class="text-gray-500 text-sm leading-relaxed border-t border-gray-100 pt-3">
+                        （例: 改良パーツの組み込み、障害物乗り越えテスト、遠隔映像伝送の実地テスト）
                     </p>
                 </article>
 
-                <!-- 段階 4 -->
-                <article class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:border-emerald-400 hover:shadow-md transition duration-200">
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700">
-                            STEP 04
-                        </span>
-                        <span class="text-xs font-medium px-2 py-0.5 rounded border border-gray-300 text-gray-500 bg-gray-50">
-                            未着手
+                <!-- STEP 4 (未着手) -->
+                <article class="bg-white border-l-4 border-l-gray-300 border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition duration-300 relative group opacity-90 hover:opacity-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-2">
+                            <span class="w-7 h-7 rounded-lg bg-gray-400 text-white font-bold text-xs flex items-center justify-center shadow-sm">
+                                04
+                            </span>
+                            <span class="text-xs font-bold text-gray-500 tracking-wider">PHASE 4</span>
+                        </div>
+                        <span class="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-full bg-gray-100 text-gray-600 border border-gray-200">
+                            <i class="fa-regular fa-clock text-gray-400"></i> 未着手
                         </span>
                     </div>
-                    <h3 class="text-lg font-bold text-gray-800 mb-2 border-b border-gray-200 pb-2">
-                        4. 評価・最終調整
+                    <h3 class="text-lg font-bold text-gray-800 mb-2 group-hover:text-emerald-600 transition-colors">
+                        評価・最終調整
                     </h3>
-                    <p class="text-gray-600 text-sm leading-relaxed min-h-[60px]">
-                        （例: 改善後の成果測定、完成度の確認および今後の展望）
+                    <p class="text-gray-500 text-sm leading-relaxed border-t border-gray-100 pt-3">
+                        （例: 改善成果の総合評価、完成度の検証、発表に向けたドキュメント整理）
                     </p>
                 </article>
 
